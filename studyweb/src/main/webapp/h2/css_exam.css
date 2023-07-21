@@ -1,0 +1,23 @@
+@charset "UTF-8";
+h2{
+	background-color: rgb(147, 99, 156);
+	color: rgb(255, 255, 255);
+	text-align: center;
+	padding: 0.3em;
+}
+
+ul{
+	width: 80%;
+	padding: 0px;
+	margin:auto;
+}
+
+li{
+	background-color: rgb(84, 108, 171);
+	border-radius: 5px; 
+	padding: 10px;
+	padding-left: 20px;
+	margin: 0.5em;
+	list-style: none;
+	
+}

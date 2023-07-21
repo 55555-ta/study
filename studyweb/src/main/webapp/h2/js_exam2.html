@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>자바 스크립트 예제2</title>
+<script>
+	function login() {
+		let id = document.loginform.id.value;
+		let passwd = document.loginform.passwd.value;
+		let result = document.getElementById("result");
+		
+		result.style.backgroundColor="DarkCyan";
+		result.innerHTML = '입력결과: '+id +' , '+ passwd;
+	}
+</script>
+</head>
+<body>
+	<h2>로그인</h2>
+	<hr>
+	<form name="loginform">
+		아이디:<input type="text" name="id"> 비밀번호:<input type="text" name="passwd"> <button type="button" onClick="login()"> 로그인 </button>
+	</form>
+	<hr>
+	<div id="result">
+	</div>
+	
+
+</body>
+</html>
