@@ -82,6 +82,22 @@ public Controller() {
 		dispatcher.forward(request, response);
 		
 	}
+	
+	public String login(HttpServletRequest request) {
+		//HTML 폼에서 username으로 전달된 값을 가지고옴
+		String username = request.getParameter("username");
+		
+		//username이 입력된 경우에만 세션에 값을 저장
+		if (username !="") {
+			request.getSession().setAttribute("user",username);
+		}else {
+			request.setAttribute("error", "로그인 아이디를 입렵하세요");
+			return "snsLogin.jsp" ;
+		}
+		//TODO list() 만든 이후에 개선 필요
+		return "snsMain.jsp";
+		
+	}
 
 	
 }
