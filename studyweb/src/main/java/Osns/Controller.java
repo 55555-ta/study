@@ -2,6 +2,8 @@ package Osns;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -94,9 +96,39 @@ public Controller() {
 			request.setAttribute("error", "로그인 아이디를 입렵하세요");
 			return "snsLogin.jsp" ;
 		}
-		//TODO list() 만든 이후에 개선 필요
-		return "snsMain.jsp";
 		
+		return list(request);
+		
+	}
+	public String write(HttpServletRequest request) {
+		String user = (String) request.getSession().getAttribute("user");
+		Message m = new Message();		
+		
+		// HTML 폼에서 전달된 msg값을 가지고옴
+		String msg = request.getParameter("msg");
+		//메세지 없는 경우 에러처리
+		if(msg =="") {
+			request.setAttribute("error", "메시지를 입력하세요");
+			return(list(request));
+		}else {
+			//메시지 저장
+			m.setMsg(msg);
+		}
+		// 이름,날짜 저장
+		m.setName(user);
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		m.setDate(LocalDateTime.now().format(f));
+		
+		// 톰캣 콘솔을 통한 로길
+		ctx.log(msg+"추가됨");
+		
+		service.write(m);
+		
+		return list(request);
+		
+	}
+	public String list(HttpServletRequest request) {
+		return "snsMain.jsp";
 	}
 
 	

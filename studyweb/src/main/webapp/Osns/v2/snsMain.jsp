@@ -13,17 +13,24 @@
           <h3 class="text-info"><i class="fas fa-cat"> </i> OSNS :: HOME</h3>
           <hr>
           <h5 class="text-secondary"> > 아타라시이 뉴-스오 세카이노 민나토 공유하세요! </h5>
-          <form method="post" action="#">
+          <form method="post" action="${baseUrl}">
+              <input type="hidden" name="action" value="write" />
                <div class="input-group">
-                   <button type="button" class="btn btn-outline-success">${param.username}</button>
+                   <button type="button" class="btn btn-outline-success">@${user}</button>
                    <input type="text" name="msg" class="form-control">
                    <button type="submit" class="btn btn-warning">Tweet</button>
                </div>
           </form>
+          <c:if test= "${error != null}">
+                      <div class="alert alert-danger alert-dismissble fade show mt-3">
+                         에러 발생: ${error}
+                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                      </div>
+           </c:if>
           <hr>
           <div class="m-3">
-              <a href="#"><span class="badge rounde-pill bg-success">새로고침</span></a>
-              <a href="snsLogin.jsp"><span class="badge rounde-pill bg-secondary">로그아웃</span></a>
+              <a href="${baseUrl}?action=list"><span class="badge rounde-pill bg-success">새로고침</span></a>
+              <a href="${baseUrl}?action=logout"><span class="badge rounde-pill bg-secondary">로그아웃</span></a>
           
           </div>
           
