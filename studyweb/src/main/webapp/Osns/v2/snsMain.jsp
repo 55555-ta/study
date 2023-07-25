@@ -36,9 +36,13 @@
           
           <div>
               <ul class="list-gruop">
-                   <li class="list-group-item list-group-item-action">찰밥이 :: 왕왕왕🐶🐶🐶🐶🐶🐶크르르르릉!! , 2023-07-17</li>
-                   <li class="list-group-item list-group-item-action">곰탕이 :: 크헝? 크허허헝어엉?? , 2023-07-17</li>
-                   <li class="list-group-item list-group-item-action">후추  :: 캉캉캉!!!캉캉!!, 2023-07-17 </li>
+                  <c:forEach var="m" items="${msgList}" varStatus="s">
+                    <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">[${s.count}]${m.name} :: ${m.msg}, ${m.date} 
+                    <a href="${baseUrl}?action=del&id=${s.index}"><span class="badge bg-secondary">&times;</span></a>
+                    </li>
+                    
+                  </c:forEach>
+
                    
               
               </ul>

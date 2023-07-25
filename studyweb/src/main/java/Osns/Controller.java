@@ -128,7 +128,26 @@ public Controller() {
 		
 	}
 	public String list(HttpServletRequest request) {
+		request.setAttribute("msgList", service.getList());
 		return "snsMain.jsp";
+	}
+	public String del(HttpServletRequest request) {
+		String user = (String) request.getSession().getAttribute("user");
+		try {
+			service.delete(user, Integer.parseInt(request.getParameter("id")));
+		}catch (NumberFormatException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			request.setAttribute("error","삭제는 본인만 가능합니다");
+			e.printStackTrace();
+		}
+		//목록화면 데이터 로딩
+		return(list(request));
+	}
+	public String logout(HttpServletRequest request) {
+		request.getSession().invalidate();
+		
+		return "snsLogin.jsp";
 	}
 
 	
