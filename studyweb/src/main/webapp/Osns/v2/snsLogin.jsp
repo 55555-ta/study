@@ -31,7 +31,7 @@
                    <hr>
                    <div>
                    
-                       <a href="#"><span class="badge counded-pill bg-success">가입하기</span></a>
+                       <a href="http://localhost:8080/studyweb/Osns/v2/snsSignup.jsp"><span class="badge counded-pill bg-success">가입하기</span></a>
                        <a href="#"><span class="badge counded-pill bg-secondary">비밀번호 찾기</span></a>
                        <a href="#"><span class="badge counded-pill bg-info">문의하기</span></a>
                    </div>
